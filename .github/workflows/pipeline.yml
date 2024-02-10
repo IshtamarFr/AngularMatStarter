@@ -1,0 +1,38 @@
+name: CI CD Pipeline
+#branch master to trigger it
+
+on:
+  push:
+    branches:
+      - rien
+  pull_request:
+    branches:
+      - rien
+
+jobs:
+  analyze-front-end:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Jest tests and generate report
+        run: npm run test -- --no-watch --collect-coverage
+
+      - name: Publish Jest
+        uses: actions/upload-artifact@v4
+        with:
+          name: jest-report
+          path: coverage/lcov-report/*
+
+      - name: install scanner
+        run: npm install -g sonarqube-scanner
+
+      - name: run sonar scanner
+        run: sonar-scanner -Dsonar.token=${{secrets.SONAR_TOKEN}}

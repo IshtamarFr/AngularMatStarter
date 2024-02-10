@@ -1,0 +1,52 @@
+<!--List of all items to show-->
+<ng-template #menuTemplate>
+  <div>item 1</div>
+  <div
+    *ngIf="user?.roles?.includes('ADMIN')"
+    routerLink="/ishta"
+    class="link admin"
+  >
+    Dev.
+  </div>
+</ng-template>
+
+<div id="menu">
+  <div id="infos">
+    <img src="../../../favicon.ico" alt="app_logo" />
+    <div class="title">Angular Mat Starter</div>
+    <ng-container *ngTemplateOutlet="menuTemplate"></ng-container>
+  </div>
+  <div id="items" *ngIf="screenWidth > 500; else mobileItems">
+    <span routerLink="me" class="link">Mon compte</span>
+    <span (click)="logout()" class="link">Déconnexion</span>
+  </div>
+  <ng-template #mobileItems>
+    <mat-icon (click)="snav.toggle()">menu</mat-icon>
+  </ng-template>
+</div>
+<hr />
+<mat-sidenav-container class="example-sidenav-container">
+  <mat-sidenav
+    #snav
+    [mode]="'over'"
+    fixedInViewport
+    fixedTopGap="50"
+    position="end"
+    (click)="snav.close()"
+  >
+    <div id="sidenav">
+      <div id="sidenav-items">
+        <ng-container *ngTemplateOutlet="menuTemplate"></ng-container>
+      </div>
+      <div id="sidenav-menus">
+        <mat-divider></mat-divider>
+        <div routerLink="me" class="link"><mat-icon>person</mat-icon></div>
+        <div (click)="logout()" class="link">
+          <mat-icon>power_settings_new</mat-icon>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content> </mat-sidenav-content>
+</mat-sidenav-container>

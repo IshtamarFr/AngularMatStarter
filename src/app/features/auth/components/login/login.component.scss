@@ -1,0 +1,33 @@
+.title {
+  font-size: 20px;
+}
+
+mat-card {
+  margin: auto;
+  width: 98%;
+
+  mat-card-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  button {
+    margin: auto;
+  }
+
+  .link {
+    padding-top: 15px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .error {
+    color: red;
+    padding-top: 15px;
+    text-align: center;
+  }
+}

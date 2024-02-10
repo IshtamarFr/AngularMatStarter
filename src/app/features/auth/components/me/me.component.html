@@ -1,0 +1,96 @@
+<button mat-icon-button (click)="back()" data-cy="back">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<span class="title">Mon compte</span>
+<hr />
+<div class="me">
+  <mat-card>
+    <form class="register-form" [formGroup]="form" (ngSubmit)="submit()">
+      <mat-card-content>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Nom d'utilisateur"
+            formControlName="name"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Adresse e-mail"
+            formControlName="email"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            placeholder="Ancient mot de passe"
+            formControlName="oldPassword"
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hide2 = !hide2"
+            [attr.aria-label]="'Masquer'"
+            [attr.aria-pressed]="hide2"
+          >
+            <mat-icon>{{ hide2 ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            placeholder="Mot de passe"
+            formControlName="password"
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Masquer'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            placeholder="Confirmation"
+            formControlName="password2"
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Masquer'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid"
+          data-cy="submit"
+        >
+          Sauvegarder
+        </button>
+        <span *ngIf="onError" class="error"
+          >Cette adresse email et/ou ce nom d'utilisateur est invalide, ou le
+          mot de passe est erroné</span
+        >
+        <div (click)="logout()" class="link">Se déconnecter</div>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

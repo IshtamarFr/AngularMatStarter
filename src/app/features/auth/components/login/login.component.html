@@ -1,0 +1,50 @@
+<button mat-icon-button (click)="back()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+<span class="title">Se connecter</span>
+<hr />
+<div class="login">
+  <mat-card>
+    <form class="login-form" [formGroup]="form" (ngSubmit)="submit()">
+      <mat-card-content>
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Adresse e-mail"
+            formControlName="email"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            placeholder="Mot de passe"
+            formControlName="password"
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Masquer'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="form.invalid"
+          data-cy="submit"
+        >
+          Se connecter
+        </button>
+        <p *ngIf="onError" class="error">
+          L'email ou le mot de passe est incorrect
+        </p>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

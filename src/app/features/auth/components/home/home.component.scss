@@ -1,0 +1,47 @@
+#home {
+  width: 99%;
+
+  #welcome {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #welcome-logo {
+    height: 300%;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+  }
+
+  #welcome-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .link {
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+  }
+
+  .link + .link {
+    margin-left: 10px;
+  }
+
+  #temp {
+    margin: auto;
+    padding-top: 10px;
+
+    h1 {
+      text-align: center;
+    }
+
+    img {
+      display: block;
+      margin: auto;
+      width: 100px;
+      padding-bottom: 10px;
+    }
+  }
+}
