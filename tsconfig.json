@@ -29,5 +29,5 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "include": ["**/*.ts"]
+  "exclude": ["cypress/**/*.ts", "cypress.config.ts", "**/*.spec.ts"]
 }
