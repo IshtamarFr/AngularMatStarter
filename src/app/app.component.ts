@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { AuthService } from './features/auth/services/auth.service';
 import { User } from './interfaces/user.interface';
 import { SessionService } from './services/session.service';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +22,9 @@ export class AppComponent implements OnInit {
     private router: Router,
     private sessionService: SessionService,
     private ngZone: NgZone
-  ) {}
+  ) {
+    registerLocaleData(localeFr, 'fr');
+  }
 
   public ngOnInit(): void {
     this.autoLog();
