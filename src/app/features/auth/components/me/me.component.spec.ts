@@ -6,8 +6,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { User } from '../../../../interfaces/user.interface';
 import { AuthService } from '../../services/auth.service';
 import { of, throwError } from 'rxjs';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Router, RouterModule } from '@angular/router';
 import { SessionService } from '../../../../services/session.service';
 import { AuthSuccess } from '../../interfaces/authSuccess.interface';
 import { ModifyUserRequest } from '../../interfaces/modifyUserRequest';
@@ -39,7 +38,7 @@ describe('MeComponent', () => {
         MeComponent,
         HttpClientTestingModule,
         NoopAnimationsModule,
-        RouterTestingModule,
+        RouterModule.forRoot([]),
       ],
     }).compileComponents();
 

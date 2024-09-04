@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MenuComponent } from './menu.component';
-import { RouterTestingModule } from '@angular/router/testing';
 import { SessionService } from '../../services/session.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('MenuComponent', () => {
@@ -14,7 +13,7 @@ describe('MenuComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuComponent, RouterTestingModule, NoopAnimationsModule],
+      imports: [MenuComponent, NoopAnimationsModule, RouterModule.forRoot([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(MenuComponent);
